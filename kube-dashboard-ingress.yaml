@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard 
+  namespace: kubernetes-dashboard
+  annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  rules:
+  - host: cloud.abcxlab.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubernetes-dashboard 
+          servicePort: 443
+  - host: k8s.abcxlab.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubernetes-dashboard 
+          servicePort: 443
+  - host: dashboard.k8s.abcxlab.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubernetes-dashboard 
+          servicePort: 443
