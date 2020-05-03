@@ -9,20 +9,20 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: read-nodes
+  name: view-cluster
 rules:
-- apiGroups: [""]
+- apiGroups: ["","storage.k8s.io","rbac.authorization.k8s.io"]
   verbs: ["get", "list"]
-  resources: ["nodes"]
+  resources: ["clusterroles","namespaces","persistentvolumes","storageclasses","nodes"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: read-nodes
+  name: view-cluster
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole 
-  name: read-nodes
+  name: view-cluster
 subjects:
 - kind: ServiceAccount
   name: read-only
