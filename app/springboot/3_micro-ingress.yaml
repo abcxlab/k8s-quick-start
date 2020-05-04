@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: micro
+spec:
+  rules:
+  - host: micro.k8s.abcxlab.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: micro
+          servicePort: 80
