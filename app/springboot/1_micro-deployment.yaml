@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro
+  labels:
+    app: micro
+spec:
+  replicas: 2
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: micro
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      name: micro
+      labels:
+        app: micro
+    spec:
+      containers:
+      - image: abcxlab/micro:latest
+        name: micro 
+        ports:
+          - containerPort: 8080
+        readinessProbe:
+          periodSeconds: 1
+          httpGet:
+            path: /
+            port: 8080

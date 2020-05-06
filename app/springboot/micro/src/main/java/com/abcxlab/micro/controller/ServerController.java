@@ -11,7 +11,7 @@ public class ServerController {
 
   @RequestMapping("/")
   public String getHostName() throws UnknownHostException {
-    return InetAddress.getLocalHost().getHostName();
+    return "You've hit " + InetAddress.getLocalHost().getHostName();
   }
 
 }
