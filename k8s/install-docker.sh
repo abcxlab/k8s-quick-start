@@ -36,7 +36,3 @@ EOF'
 
 #重启docker
 sudo service docker restart
-
-
-#检查配置是否生效
-docker info
