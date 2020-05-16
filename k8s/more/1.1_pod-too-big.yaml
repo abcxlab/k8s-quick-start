@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: too-big
+  namespace: kube-abc
+spec:
+  containers:
+  - image: abcxlab/kubia:latest 
+    name: kubia
+    resources:
+      requests:
+        cpu: 2

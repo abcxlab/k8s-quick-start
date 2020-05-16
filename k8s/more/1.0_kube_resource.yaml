@@ -1,0 +1,69 @@
+# Copyright 2020 The ABCXLAB Authors.
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kube-abc
+
+---
+
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: kube-abc-limit
+  namespace: kube-abc
+spec:
+  limits:
+  - type: Pod
+    min:
+      cpu: 50m
+      memory: 5Mi
+    max:
+      cpu: 2
+      memory: 4Gi
+  - type: Container
+    defaultRequest:
+      cpu: 100m
+      memory: 200Mi
+    default:
+      cpu: 200m
+      memory: 500Mi
+    min:
+      cpu: 50m
+      memory: 5Mi
+    max:
+      cpu: 1
+      memory: 2Gi
+    maxLimitRequestRatio:
+      cpu: 5
+      memory: 10
+  - type: PersistentVolumeClaim
+    min:
+      storage: 1Gi
+    max:
+      storage: 20Gi
+ 
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: kube-abc-quota
+  namespace: kube-abc
+spec:
+  hard:
+    requests.cpu: 4
+    requests.memory: 8Gi
+    limits.cpu: 8
+    limits.memory: 16Gi
+    requests.storage: 500Gi
+    ssd.storageclass.storage.k8s.io/requests.storage: 200Gi
+    standard.storageclass.storage.k8s.io/requests.storage: 500Gi
+    pods: 50
+    replicationcontrollers: 100
+    secrets: 50
+    configmaps: 50
+    persistentvolumeclaims: 25
+    services: 25
+    services.loadbalancers: 5
+    services.nodeports: 10
+    ssd.storageclass.storage.k8s.io/persistentvolumeclaims: 10
