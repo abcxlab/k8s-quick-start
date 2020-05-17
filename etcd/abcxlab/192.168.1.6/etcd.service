@@ -1,0 +1,15 @@
+[Unit]
+Description=etcd key-value store
+Documentation=https://github.com/etcd-io/etcd
+After=network.target
+
+[Service]
+User=etcd
+Type=notify
+ExecStart=/usr/local/bin/etcd --name=xbee --data-dir=/opt/etcd/data --initial-cluster-token=etcd-cluster --snapshot-count=10000 --initial-advertise-peer-urls=https://192.168.1.6:2380 --initial-cluster=xbee=https://192.168.1.6:2380,xcat=https://192.168.1.8:2380,xant=https://192.168.1.4:2380 --advertise-client-urls=https://192.168.1.6:2379 --listen-client-urls=https://127.0.0.1:2379,https://192.168.1.6:2379 --listen-peer-urls=https://192.168.1.6:2380 --listen-metrics-urls=http://127.0.0.1:2381 --client-cert-auth=true --trusted-ca-file=/opt/etcd/pki/ca.crt --key-file=/opt/etcd/pki/server.key --cert-file=/opt/etcd/pki/server.crt --peer-client-cert-auth=true --peer-trusted-ca-file=/opt/etcd/pki/ca.crt --peer-key-file=/opt/etcd/pki/peer.key --peer-cert-file=/opt/etcd/pki/peer.crt --logger=zap
+Restart=always
+RestartSec=10s
+LimitNOFILE=40000
+
+[Install]
+WantedBy=multi-user.target

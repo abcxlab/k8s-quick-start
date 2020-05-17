@@ -26,6 +26,13 @@ spec:
         name: kubia 
         ports:
           - containerPort: 8080
+        resources:
+          requests:
+            memory: 300Mi
+            cpu: 650m
+          limits:
+            cpu: 1
+            memory: 1Gi
         readinessProbe:
           periodSeconds: 1
           httpGet:
