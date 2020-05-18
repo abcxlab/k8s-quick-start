@@ -16,3 +16,10 @@ spec:
         backend:
           serviceName: kubernetes-dashboard 
           servicePort: 443
+  - host: cloud.abcxlab.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubernetes-dashboard 
+          servicePort: 443
