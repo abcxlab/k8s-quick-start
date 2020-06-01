@@ -3,6 +3,8 @@
 ## Directory 
 /app -- for demo applicatons, includes kubia in nodejs and micro in springboot  
 /k8s -- for kubernetes cluster deployment 
+/etcd -- for etcd cluster installation and use case
+/helm -- for helm and kubeapps deployment and use cases
 
 ## Demo Env
 demo address:  https://k8s.abcxlab.com/
