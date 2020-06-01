@@ -5,7 +5,7 @@ metadata:
   labels:
     app: micro
 spec:
-  replicas: 2
+  replicas: 1
   minReadySeconds: 10
   selector:
     matchLabels:
@@ -26,6 +26,13 @@ spec:
         name: micro 
         ports:
           - containerPort: 8080
+        resources:
+          requests:
+            memory: 200Mi
+            cpu: 400m
+          limits:
+            cpu: 800m
+            memory: 400Mi     
         readinessProbe:
           periodSeconds: 1
           httpGet:

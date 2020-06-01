@@ -1,0 +1,14 @@
+ingress:
+  hosts:
+  - hub.k8s.abcxlab.com
+sync:
+  repos:
+    - name: stable
+      url: http://mirror.azure.cn/kubernetes/charts/
+      schedule: "0 * * * *"
+      successfulJobsHistoryLimit: 1
+    - name: incubator
+      url:  http://mirror.azure.cn/kubernetes/charts-incubator/
+      schedule: "*/5 * * * *"
+    - name: monocular
+      url: https://helm.github.io/monocular

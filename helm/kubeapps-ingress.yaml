@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubeapps
+  namespace: kubeapps
+spec:
+  rules:
+  - host: apps.k8s.abcxlab.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubeapps
+          servicePort: 80
