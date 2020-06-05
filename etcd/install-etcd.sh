@@ -16,9 +16,15 @@ then
 fi
 sudo cp -R ${BASEDIR}/pki /opt/etcd/.  
 sudo cp ${BASEDIR}/etcd.service /lib/systemd/system/.
-sudo cd /opt/etcd
+cd /opt/etcd
 
 sudo wget ${URL}/etcd/releases/download/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-${ARC}.tar.gz 
+
+if [ ! -f "etcd-${ETCD_VERSION}-linux-${ARC}.tar.gz" ] 
+then
+	echo "etcd package DOES NOT exists, please download it shell first"
+	exit 1
+fi
 sudo tar -xvf etcd-${ETCD_VERSION}-linux-${ARC}.tar.gz 
 sudo rm etcd-${ETCD_VERSION}-linux-${ARC}.tar.gz
 sudo ln -s etcd-${ETCD_VERSION}-linux-${ARC} latest 
