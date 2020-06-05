@@ -70,7 +70,7 @@ EOF
 BASEDIR=$(dirname "$0")
 
 # 初始化etcd根证书
-#sudo kubeadm init phase certs etcd-ca
+sudo kubeadm init phase certs etcd-ca
 
 #CLUSTER="xant=https://192.168.1.4:2380,xbee=https://192.168.1.6:2380,xcat=https://192.168.1.8:2380"
 CLUSTER=""
