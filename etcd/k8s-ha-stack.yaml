@@ -1,0 +1,15 @@
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+networking:
+ podSubnet: 10.244.0.0/16
+kubernetesVersion: v1.18.2
+controlPlaneEndpoint: "kubeapi.abcxlab.com:6443"
+etcd:
+    external:
+        endpoints:
+        - https://192.168.1.5:2379
+        - https://192.168.1.7:2379
+        - https://192.168.1.9:2379
+        caFile: /opt/etcd/pki/ca.crt
+        certFile: /opt/etcd/pki/apiserver-etcd-client.crt
+        keyFile: /opt/etcd/pki/apiserver-etcd-client.key
