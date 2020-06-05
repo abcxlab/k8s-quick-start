@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #替换成自己的ETCD群集节点，格式为： ([HOST_NAME] = [HOST_IP] ...)
-declare -A ETCDHOST_MAP=(["xant"]="192.168.1.4" ["xbee"]="192.168.1.6" ["xdog"]="192.168.1.12")
+declare -A ETCDHOST_MAP=(["xant"]="192.168.1.4" ["xbee"]="192.168.1.6" ["xdog"]="192.168.1.10")
 
 function gen_conf(){
 NAME=$1
@@ -31,13 +31,13 @@ EOF
 function gen_cert(){
 	ETCD_HOST=$1
 	mkdir -p "${BASEDIR}/etcd/${ETCD_HOST}/pki"
+        sudo find /etc/kubernetes/pki/etcd -not -name ca.crt -not -name ca.key -type f -delete
 	sudo kubeadm init phase certs etcd-server --config=${BASEDIR}/etcd/${ETCD_HOST}/kubeadmcfg.yaml
 	sudo kubeadm init phase certs etcd-peer --config=${BASEDIR}/etcd/${ETCD_HOST}/kubeadmcfg.yaml
 	sudo kubeadm init phase certs etcd-healthcheck-client --config=${BASEDIR}/etcd/${ETCD_HOST}/kubeadmcfg.yaml
 	sudo kubeadm init phase certs apiserver-etcd-client --config=${BASEDIR}/etcd/${ETCD_HOST}/kubeadmcfg.yaml
 	sudo cp -R /etc/kubernetes/pki/etcd/*  ${BASEDIR}/etcd/${ETCD_HOST}/pki/.
 	sudo cp -R /etc/kubernetes/pki/apiserver-etcd*  ${BASEDIR}/etcd/${ETCD_HOST}/pki/.
-        sudo find /etc/kubernetes/pki/etcd -not -name ca.crt -not -name ca.key -type f -delete
 }	
 
 function gen_service(){
