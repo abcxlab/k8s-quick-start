@@ -22,7 +22,7 @@ spec:
         app: micro
     spec:
       containers:
-      - image: abcxlab/micro:latest
+      - image: hub.abcxlab.com/bootcamp/micro:v1.0.0
         name: micro 
         ports:
           - containerPort: 8080
@@ -32,9 +32,18 @@ spec:
             cpu: 400m
           limits:
             cpu: 800m
-            memory: 400Mi     
+            memory: 400Mi  
         readinessProbe:
-          periodSeconds: 1
+          periodSeconds: 3
+          timeoutSeconds: 1
           httpGet:
             path: /
             port: 8080
+          initialDelaySeconds: 15
+        livenessProbe:
+          periodSeconds: 3
+          timeoutSeconds: 1
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 15

@@ -5,7 +5,7 @@ metadata:
   namespace: kubeapps
 spec:
   rules:
-  - host: apps.abcxlab.com
+  - host: apps.k8s.abcxlab.com
     http:
       paths:
       - path: /

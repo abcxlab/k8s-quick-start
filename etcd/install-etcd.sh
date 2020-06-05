@@ -9,6 +9,11 @@ URL=${MIRROR_URL}
 ARC="amd64"
 
 sudo mkdir -p /opt/etcd/data
+if [ ! -d "${BASEDIR}/pki" ] 
+then
+	echo "Directory pki which holds certs DOES NOT exists, please run init-etcd-cluster shell first"
+	exit 1
+fi
 sudo cp -R ${BASEDIR}/pki /opt/etcd/.  
 sudo cp ${BASEDIR}/etcd.service /lib/systemd/system/.
 sudo cd /opt/etcd

@@ -22,7 +22,7 @@ spec:
         app: kubia
     spec:
       containers:
-      - image: abcxlab/kubia:latest
+      - image: hub.abcxlab.com/bootcamp/kubia:v1.0.0
         name: kubia 
         ports:
           - containerPort: 8080
@@ -38,3 +38,12 @@ spec:
           httpGet:
             path: /
             port: 8080
+          initialDelaySeconds: 5
+        livenessProbe:
+          periodSeconds: 3
+          timeoutSeconds: 1
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+
