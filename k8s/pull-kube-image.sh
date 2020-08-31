@@ -1,9 +1,9 @@
 #!/bin/bash
 ## pull kubernetes images from aliyun mirror
 
-#for i in `kubeadm config images list`; do
-imglist=("k8s.gcr.io/kube-apiserver:v1.18.3" "k8s.gcr.io/kube-controller-manager:v1.18.3" "k8s.gcr.io/kube-scheduler:v1.18.3" "k8s.gcr.io/kube-proxy:v1.18.3" "k8s.gcr.io/pause:3.1" "k8s.gcr.io/etcd:3.3.15-0" "k8s.gcr.io/coredns:1.6.2")
-for i in "${imglist[@]}"; do
+for i in `kubeadm config images list`; do
+#imglist=("k8s.gcr.io/kube-apiserver:v1.18.3" "k8s.gcr.io/kube-controller-manager:v1.18.3" "k8s.gcr.io/kube-scheduler:v1.18.3" "k8s.gcr.io/kube-proxy:v1.18.3" "k8s.gcr.io/pause:3.1" "k8s.gcr.io/etcd:3.3.15-0" "k8s.gcr.io/coredns:1.6.2")
+#for i in "${imglist[@]}"; do
   imageName=${i#k8s.gcr.io/}
   sudo docker pull registry.aliyuncs.com/google_containers/$imageName
   sudo docker tag registry.aliyuncs.com/google_containers/$imageName k8s.gcr.io/$imageName
