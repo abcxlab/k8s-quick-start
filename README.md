@@ -1,6 +1,6 @@
 # Kubernetes quick starts
 ## Hosting 
-国内Gitlab: https://gitlab.abcxlab.com/bootcamp/k8s-quick-start
+国内Gitlab: https://gitlab.abcxlab.com/bootcamp/k8s-quick-start 
 国外Github：https://github.com/abcxlab/k8s-quick-start
 ## Directory 
 /app -- for demo applicatons, includes kubia in nodejs and micro in springboot  
