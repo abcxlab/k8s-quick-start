@@ -11,7 +11,7 @@
 ## Demo Env
 demo address:  https://k8s.abcxlab.com/
 
-login token: 请扫码关注ABC实验室微信公众号，输入”k8s” 即可获取
+login token: 请扫码关注ABC实验室微信公众号，输入”k8s” 即可获取  
 ![ABC实验室](https://www.abcxlab.com/wp-content/uploads/2020/03/qrcode_abcxlab.jpg)
 
 ## Installation Guide 
