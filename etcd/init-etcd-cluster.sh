@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #替换成自己的ETCD群集节点，格式为： ([HOST_NAME] = [HOST_IP] ...)
-declare -A ETCDHOST_MAP=(["xbox"]="192.168.1.5" ["xcase"]="192.168.1.7" ["xdot"]="192.168.1.9")
+declare -A ETCDHOST_MAP=(["xant"]="192.168.1.4" ["xbee"]="192.168.1.6" ["xdog"]="192.168.1.10")
+CLUSTER="xant=https://192.168.1.4:2380,xbee=https://192.168.1.6:2380,xdog=https://192.168.1.10:2380"
 
 function gen_conf(){
 NAME=$1
@@ -72,8 +73,6 @@ BASEDIR=$(dirname "$0")
 # 初始化etcd根证书
 sudo kubeadm init phase certs etcd-ca
 
-#CLUSTER="xant=https://192.168.1.4:2380,xbee=https://192.168.1.6:2380,xcat=https://192.168.1.8:2380"
-CLUSTER=""
 HEAD=0
 for key in "${!ETCDHOST_MAP[@]}"; do
 	if [ "$HEAD" -eq "0" ] 
