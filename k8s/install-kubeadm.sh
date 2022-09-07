@@ -7,4 +7,4 @@ EOF'
 
 #安装k8s组件
 sudo apt-get -y update
-sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-get install kubelet=1.18.2-00 kubeadm=1.18.2-00 kubectl=1.18.2-00
