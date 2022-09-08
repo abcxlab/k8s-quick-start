@@ -12,9 +12,11 @@ done;
 
 
 ## pull flannel images from qiniu mirror
-sudo docker pull hub.abcxlab.com/kube/flannel:v0.12.0-amd64
-sudo docker tag hub.abcxlab.com/kube/flannel:v0.12.0-amd64 quay.io/coreos/flannel:v0.12.0-amd64
+#sudo docker pull hub.abcxlab.com/kube/flannel:v0.12.0-amd64
+#sudo docker tag hub.abcxlab.com/kube/flannel:v0.12.0-amd64 quay.io/coreos/flannel:v0.12.0-amd64
+sudo docker pull quay.io/kube/flannel:v0.12.0-amd64
 
 ## pull nginx-ingress images from qiniu mirror
-sudo docker pull hub.abcxlab.com/kube/nginx-ingress-controller:0.30.0
-sudo docker tag hub.abcxlab.com/kube/nginx-ingress-controller:0.30.0 quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.30.0
+#sudo docker pull hub.abcxlab.com/kube/nginx-ingress-controller:0.30.0
+#sudo docker tag hub.abcxlab.com/kube/nginx-ingress-controller:0.30.0 quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.30.0
+sudo docker pull quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.30.0
