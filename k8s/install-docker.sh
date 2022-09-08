@@ -8,7 +8,7 @@ sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/li
 
 #安装Docker
 sudo apt-get -y update
-sudo apt-get -y install docker-ce=5:19.03.15~3-0~ubuntu-focal
+sudo apt-get -y install docker-ce=5:19.03.15~3-0~ubuntu-bionic
 
 
 #当前用户添加docker权限
