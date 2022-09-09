@@ -22,7 +22,7 @@ spec:
         app: micro
     spec:
       containers:
-      - image: hub.abcxlab.com/bootcamp/micro:v1.0.0
+      - image: abcxlab/micro
         name: micro 
         ports:
           - containerPort: 8080
